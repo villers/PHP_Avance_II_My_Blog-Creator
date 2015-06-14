@@ -1,3 +1,22 @@
+## Install
+
+run the following comands:
+
+``composer install``
+
+``npm install``
+
+``bower install``
+
+``php artisan migrate --seed``
+
+``php artisan serve``
+
+
+``gulp``
+
+
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
