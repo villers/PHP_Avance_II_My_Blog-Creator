@@ -12,12 +12,11 @@
 */
 
 
-// Home
-Route::controller('/', 'HomeController');
-
-
 // Auth
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+// Home
+Route::controller('/', 'HomeController');
