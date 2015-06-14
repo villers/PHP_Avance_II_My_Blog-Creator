@@ -12,7 +12,11 @@ class CreatePostTagTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('post_tag', function(Blueprint $table) {
+            $table->increments('id');
+            $table->integer('post_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class CreatePostTagTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('post_tag');
     }
 }

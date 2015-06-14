@@ -14,8 +14,14 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call('UserTableSeeder');
+        $lipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, aperiam dignissimos distinctio exercitationem fugit harum in inventore maiores molestias mollitia officiis, perferendis quibusdam quisquam, ratione recusandae reprehenderit temporibus tenetur unde?";
+
+        Role::create([
+            'title' => 'Administrator',
+            'slug' => 'admin'
+        ]);
 
         Model::reguard();
     }
 }
+?>
