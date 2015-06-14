@@ -1,16 +1,28 @@
 ## Install
 
 ## vhost:
-```<VirtualHost *.blog.dev:80>
-  ServerName blog.dev
-  DocumentRoot /Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public
-  <Directory "/Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public">
-    Options +FollowSymLinks
-    AllowOverride All
-    Order allow,deny
-    Allow from all
-  </Directory>
-</VirtualHost>```
+```<VirtualHost localhost:80>
+       DocumentRoot "/Library/WebServer/Documents"
+       <Directory "/Library/WebServer/Documents">
+           Options Indexes FollowSymLinks Multiviews
+           MultiviewsMatch Any
+           AllowOverride All
+           Require all granted
+       </Directory>
+   </VirtualHost>
+   
+   <VirtualHost blog.dev:80>
+     ServerName blog.dev
+     ServerAlias *.blog.dev
+     DocumentRoot "/Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public"
+     <Directory "/Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public">
+       Options +FollowSymLinks
+       AllowOverride All
+       Order allow,deny
+       Allow from all
+     </Directory>
+   </VirtualHost>
+```
 
 ## dnsmask
 http://asciithoughts.com/posts/2014/02/23/setting-up-a-wildcard-dns-domain-on-mac-os-x/
