@@ -1,19 +1,51 @@
 ## Install
 
-run the following comands:
+## vhost:
+```<VirtualHost *.blog.dev:80>
+  ServerName blog.dev
+  DocumentRoot /Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public
+  <Directory "/Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public">
+    Options +FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>```
 
-``composer install``
+## dnsmask
+http://asciithoughts.com/posts/2014/02/23/setting-up-a-wildcard-dns-domain-on-mac-os-x/
 
-``npm install``
+### mac:
+```brew install dnsmasq
+mkdir -p /usr/local/etc
+echo "address=/.dev/127.0.0.1" > /usr/local/etc/dnsmasq.conf
 
-``bower install``
+sudo cp -fv /usr/local/opt/dnsmasq/*.plist \
+  /Library/LaunchDaemons
+  
+sudo launchctl load \
+  /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+  
+sudo mkdir -p /etc/resolver
+sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'```
 
-``php artisan migrate --seed``
+### linux: 'a tester'
+```apt-get install dnsmasq
+echo "address=/.dev/127.0.0.1" > /etc/dnsmasq.conf
+sudo mkdir -p /etc/resolver
+sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+/etc/init.d/dnsmasq restart```
 
-``php artisan serve``
+## run the following comands:
 
 
-``gulp``
+
+```composer install
+npm install
+bower install
+php artisan migrate --seed
+php artisan serve
+gulp```
 
 
 

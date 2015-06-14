@@ -12,6 +12,12 @@
 */
 
 
+Route::group(['domain' => '{account}.blog.dev'], function () {
+    Route::get('/', function ($account) {
+        return $account;
+    });
+});
+
 // Auth
 Route::controllers([
     'auth' => 'Auth\AuthController',
