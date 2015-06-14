@@ -1,25 +1,23 @@
 @extends('front.layout')
 
 @section('main')
-    <div class="page-login">
-        <div class="ui container">
-            <div class="ui stacked segment">
+    <div class="column sixteen wide">
+        <div class="ui segment">
+            @if (count($errors) > 0)
+                <div class="ui primary inverted red segment">
+                    @foreach ($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                </div>
+            @endif
 
-                @if (count($errors) > 0)
-                    <div class="ui primary inverted red segment">
-                        @foreach ($errors->all() as $error)
-                            <p>{{$error}}</p>
-                        @endforeach
-                    </div>
-                @endif
-
-                {!! Form::open(['class' => 'ui form', 'method' => 'post']) !!}
+            {!! Form::open(['class' => 'ui form', 'method' => 'post']) !!}
                 <div class=" field">
                     <div class="required field">
-                        {!! Form::label('name', 'Username') !!}
+                        {!! Form::label('email', 'Email') !!}
 
                         <div class="ui icon input">
-                            {!! Form::text('name', old('name'), ['placeholder' => 'Username', 'maxlength' => '16']) !!}
+                            {!! Form::email('email', old('email'), ['placeholder' => 'Email']) !!}
                             <i class="user icon"></i>
                         </div>
                     </div>
@@ -46,9 +44,7 @@
                         </button>
                     </div>
                 </div>
-                {!! Form::close() !!}
-
-            </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @stop

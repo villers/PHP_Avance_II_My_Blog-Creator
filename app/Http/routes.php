@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+
+// Home
+Route::controller('/', 'HomeController');
+
+
+// Auth
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
