@@ -1,7 +1,8 @@
 ## Install
 
 ## vhost:
-```<VirtualHost localhost:80>
+```
+<VirtualHost localhost:80>
        DocumentRoot "/Library/WebServer/Documents"
        <Directory "/Library/WebServer/Documents">
            Options Indexes FollowSymLinks Multiviews
@@ -9,9 +10,8 @@
            AllowOverride All
            Require all granted
        </Directory>
-   </VirtualHost>
-   
-   <VirtualHost blog.dev:80>
+</VirtualHost>
+<VirtualHost blog.dev:80>
      ServerName blog.dev
      ServerAlias *.blog.dev
      DocumentRoot "/Users/viller_m/rendu/PHP_Avance_II_My_Blog-Creator/public"
@@ -28,7 +28,8 @@
 http://asciithoughts.com/posts/2014/02/23/setting-up-a-wildcard-dns-domain-on-mac-os-x/
 
 ### mac:
-```brew install dnsmasq
+```
+brew install dnsmasq
 mkdir -p /usr/local/etc
 echo "address=/.dev/127.0.0.1" > /usr/local/etc/dnsmasq.conf
 
@@ -39,27 +40,27 @@ sudo launchctl load \
   /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
   
 sudo mkdir -p /etc/resolver
-sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'```
+sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+```
 
 ### linux: 'a tester'
-```apt-get install dnsmasq
+```
+apt-get install dnsmasq
 echo "address=/.dev/127.0.0.1" > /etc/dnsmasq.conf
 sudo mkdir -p /etc/resolver
 sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
-/etc/init.d/dnsmasq restart```
+/etc/init.d/dnsmasq restart
+```
 
 ## run the following comands:
-
-
-
-```composer install
+```
+composer install
 npm install
 bower install
 php artisan migrate --seed
 php artisan serve
-gulp```
-
-
+gulp
+```
 
 ## Laravel PHP Framework
 
