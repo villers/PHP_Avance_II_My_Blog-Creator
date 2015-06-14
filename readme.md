@@ -45,10 +45,9 @@ sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
 
 ### linux: 'a tester'
 ```
-apt-get install dnsmasq
-echo "address=/.dev/127.0.0.1" > /etc/dnsmasq.conf
-sudo mkdir -p /etc/resolver
-sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+sudo apt-get install dnsmasq
+sudo echo "listen-address=127.0.0.1" >> /etc/dnsmasq.conf
+sudo echo "address=/dev/127.0.0.1" > /etc/resolver/dev
 /etc/init.d/dnsmasq restart
 ```
 
