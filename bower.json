@@ -1,0 +1,19 @@
+{
+  "name": "PHP_Avance_II_My_Blog-Creator",
+  "version": "0.0.0",
+  "authors": [
+    "viller_m <mickael.villers@epitech.eu>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "~1.12.3"
+  }
+}
