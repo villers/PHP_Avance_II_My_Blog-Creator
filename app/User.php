@@ -43,6 +43,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsTo('App\Role');
     }
 
+    public function following()
+    {
+        return $this->hasMany('App\Follow');
+    }
+
+    public function followers()
+    {
+        return $this->hasMany('App\Follow', 'user_followed_id');
+    }
+
     public function isAdmin()
     {
         return $this->role->slug == 'admin';
