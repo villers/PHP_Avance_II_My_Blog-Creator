@@ -1,84 +1,47 @@
 @extends('front.layout')
-<!--
- // https://github.com/AaronJan/laravel5-example/blob/master/resources/views/welcome.blade.php
 
- -->
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
-            <h2 class="ui dividing header">Message board</h2>
+            <h2 class="ui dividing header">Users List</h2>
 
-            <div class="ui feed">
-                <div class="event">
-                    <div class="label">
-                        <img src="http://videonoob.fr/wp-content/uploads/001.jpg">
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            <span class="ui blue label">Name</span>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, dignissimos quis! A cumque dolor ea eaque est, eum, expedita harum iure maxime nostrum praesentium quam ratione repellat sapiente tenetur. Quia!
-                            <div class="date">
-                                Message
+            <div class="ui grid">
+                @foreach($users as $user)
+                <div class="four wide column">
+                    <div class="ui card">
+                        <div class="image dimmable">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <a class="ui inverted button" href="{{ route('blog.user.index', ['login' => $user->name]) }}">Show User</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {!! Html::image('http://www.gravatar.com/avatar/'. md5(strtolower(trim($user->email))) .'.jpg?size=200', $user->name, array('class' => 'center')) !!}
+                        </div>
+                        <div class="content">
+                            <div class="header">{{$user->name}}</div>
+                            <div class="meta">
+                                <a class="group">{{$user->role->title}}</a>
                             </div>
                         </div>
-                        <div class="meta">
-                            <a class="like">
-                                <i class="like icon"></i> Like
+                        <div class="extra content">
+                            <a class="right floated created">
+                                Joined {{ date('Y', strtotime($user->created_at)) }}
+                            </a>
+                            <a class="friends">
+                                <i class="user icon"></i>
+                                {{ count($user->followers) }} Followers
                             </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
 
-            <!-- Pagination start -->
-            <div class="ui pagination menu">
-                <a class="icon item">
-                    <i class="left arrow icon"></i>
-                </a>
-                <a class="active item">
-                    1
-                </a>
-                <div class="disabled item">
-                    ...
-                </div>
-                <a class="item">
-                    10
-                </a>
-                <a class="item">
-                    11
-                </a>
-                <a class="item">
-                    12
-                </a>
-                <a class="icon item">
-                    <i class="right arrow icon"></i>
-                </a>
-                {! with(new App\Presenter\SemanticUiPresenter($messages))->render() !}
+            <div class="ui column center aligned">
+                {!! with(new App\Presenter\SemanticUiPresenter($users))->render() !!}
             </div>
-            <!-- Pagination end -->
-
-            <div class="ui divider"></div>
-
-
-            <div class="ui info message">
-                <p>
-                    Login to leave a message!
-                </p>
-            </div>
-
-            <div class="ui divider"></div>
-
-            <form action="/message/store" method="post" class="ui form">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <div class="field">
-                    <label>Message</label>
-                    <textarea name="content"></textarea>
-                </div>
-
-                <button type="submit" class="ui submit button green fluid">publish</button>
-            </form>
-
         </div>
     </div>
 @stop
