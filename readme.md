@@ -56,9 +56,9 @@ sudo echo "address=/dev/127.0.0.1" > /etc/resolver/dev
 composer install
 npm install
 bower install
-php artisan migrate --seed
-php artisan serve
 gulp
+php artisan migrate --seed
+php artisan serve --host=blog.dev
 ```
 
 ## Laravel PHP Framework
