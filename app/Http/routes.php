@@ -11,18 +11,15 @@
 |
 */
 
-
-Route::group(['domain' => '{account}.blog.dev'], function () {
-    Route::get('/', function ($account) {
-        return $account;
-    });
+Route::group(['domain' => '{login}.blog.dev'], function () {
+    Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
 });
+
+Route::get('/', 'HomeController@getIndex');
+Route::get('/home', 'HomeController@getHome');
 
 // Auth
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-
-// Home
-Route::controller('/', 'HomeController');

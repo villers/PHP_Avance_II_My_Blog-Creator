@@ -7,11 +7,12 @@
  */
 
 namespace app\Http\Controllers;
-use App\Http\Controllers\Controller;
+use App\User;
 
 class HomeController extends Controller {
     public function getIndex() {
-        return view('front.index');
+        $users = User::paginate(5);
+        return view('front.index', compact('users'));
     }
 
     public function getHome() {
