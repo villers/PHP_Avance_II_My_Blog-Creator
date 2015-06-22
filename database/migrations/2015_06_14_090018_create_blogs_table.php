@@ -14,10 +14,10 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function(Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
             $table->string('title', 255);
             $table->text('summary');
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
         });
     }
 
@@ -31,3 +31,4 @@ class CreateBlogsTable extends Migration
         Schema::drop('blogs');
     }
 }
+

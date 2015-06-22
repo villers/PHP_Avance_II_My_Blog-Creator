@@ -1,5 +1,6 @@
 <?php
 
+use App\Blog;
 use App\Comment;
 use App\Contact;
 use App\Post;
@@ -82,6 +83,26 @@ class DatabaseSeeder extends Seeder
         ];
         foreach ($tags as $tag) {
             Tag::create($tag);
+        }
+
+        // Création des blog
+        $blogs = [
+            [
+                'title' => 'Post 1',
+                'summary' => $lipsum,
+                'user_id' => 1
+            ],[
+                'title' => 'Post 2',
+                'summary' => $lipsum,
+                'user_id' => 2
+            ],[
+                'title' => 'Post 3',
+                'summary' => $lipsum,
+                'user_id' => 2
+            ]
+        ];
+        foreach ($blogs as $blog) {
+            Blog::create($blog);
         }
 
         // Création des Post
