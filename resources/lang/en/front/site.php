@@ -6,4 +6,5 @@ return [
     'login' => 'Connexion',
     'register' => 'Register',
     'logout' => 'Logout',
+    'myblogs' => 'My Blogs',
 ];
