@@ -13,10 +13,14 @@
 
 Route::group(['domain' => '{login}.blog.dev'], function () {
     Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
+    Route::get('/blog/{id}', ['uses' => 'BlogUserController@getBlog', 'as' => 'blog.user.blog']);
+    Route::get('/post/{id}', ['uses' => 'BlogUserController@getPost', 'as' => 'blog.user.post']);
 });
 
-Route::get('/', 'HomeController@getIndex');
-Route::get('/home', 'HomeController@getHome');
+Route::group(['domain' => 'blog.dev'], function () {
+    Route::get('/', ['uses' => 'HomeController@getIndex', 'as' => 'blog.index']);
+    Route::get('/home', ['uses' => 'HomeController@getHome', 'as' => 'blog.home']);
+});
 
 // Auth
 Route::controllers([

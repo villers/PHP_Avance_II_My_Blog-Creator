@@ -9,25 +9,17 @@
             <h2 class="ui dividing header">Blog's of {{$user->name}}</h2>
 
             <div class="ui grid">
-                @foreach($user->posts as $post)
+                @foreach($user->blogs as $blog)
                     <div class="four wide column">
                         <div class="ui card">
                             <div class="content">
                                 <div class="header">
-                                    <a href="#">{{$post->title}}</a>
+                                    <a href="{{ route('blog.user.blog', ['login' => $user->name, 'id' => $blog->id]) }}">{{$blog->title}}</a>
                                 </div>
                                 <div class="meta">
-                                    <span>Created {{ date('Y', strtotime($user->created_at)) }}</span>
-                                    @foreach($post->tags as $index => $tags)
-                                        <a href="#">
-                                            {{$tags->tag}}
-                                            @if( $index+1 == count($tags))
-                                                ,
-                                            @endif
-                                        </a>
-                                    @endforeach
+                                    <span>Created {{ date('Y', strtotime($blog->created_at)) }}</span>
                                 </div>
-                                <p>{{$post->summary}}</p>
+                                <p>{{$blog->summary}}</p>
                             </div>
                         </div>
                     </div>

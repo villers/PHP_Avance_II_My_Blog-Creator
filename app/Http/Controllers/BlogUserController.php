@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Route;
 
@@ -11,9 +12,22 @@ class BlogUserController extends Controller
         $this->user = User::where('name', Route::input('login'))->firstOrFail();
     }
 
-    public function getIndex()
+    public function getIndex($login)
     {
         $user = $this->user;
         return view('front.bloguser', compact('user'));
+    }
+
+    public function getBlog($login, $id)
+    {
+        $user = $this->user;
+        return view('front.blog', compact('user', 'id'));
+    }
+
+    public function getPost($login, $id)
+    {
+        $user = $this->user;
+        $post = Post::findOrFail($id);
+        return view('front.post', compact('user', 'post'));
     }
 }

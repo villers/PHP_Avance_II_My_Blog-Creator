@@ -88,15 +88,15 @@ class DatabaseSeeder extends Seeder
         // Création des blog
         $blogs = [
             [
-                'title' => 'Post 1',
+                'title' => 'Blog 1',
                 'summary' => $lipsum,
                 'user_id' => 1
             ],[
-                'title' => 'Post 2',
+                'title' => 'Blog 2',
                 'summary' => $lipsum,
                 'user_id' => 2
             ],[
-                'title' => 'Post 3',
+                'title' => 'Blog 3',
                 'summary' => $lipsum,
                 'user_id' => 2
             ]

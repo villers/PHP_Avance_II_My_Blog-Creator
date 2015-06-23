@@ -14,12 +14,14 @@
 </head>
 <body>
     <nav class="ui fixed menu inverted navbar">
-        {!! link_to('/', trans('front/site.title'), ['class' => 'brand item']) !!}
-        {!! link_to('/', trans('front/site.home'), ['class' => 'item']) !!}
+        {!! HTML::linkRoute('blog.index', trans('front/site.title'), [], ['class' => 'brand item']) !!}
+        {!! HTML::linkRoute('blog.home', trans('front/site.home'), [], ['class' => 'item']) !!}
+
         @if(!Auth::check())
             {!! link_to('auth/login', trans('front/site.login'), ['class' => 'item']) !!}
             {!! link_to('auth/register', trans('front/site.register'), ['class' => 'item']) !!}
         @else
+            {!! HTML::linkRoute('blog.user.index', trans('front/site.myblogs'), ['login' => 'admin'], ['class' => 'item']) !!}
             {!! link_to('auth/logout', trans('front/site.logout'), ['class' => 'item']) !!}
         @endif
     </nav>
