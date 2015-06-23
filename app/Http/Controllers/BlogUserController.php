@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\Comment;
 use App\Post;
 use App\Tag;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 class BlogUserController extends Controller
@@ -39,5 +43,32 @@ class BlogUserController extends Controller
         $user = $this->user;
         $post = Post::findOrFail($id);
         return view('front.post', compact('user', 'post'));
+    }
+
+    public function postComment($login, $id)
+    {
+        $comment = new Comment;
+        $comment->content = Input::get('content');
+        $comment->user_id = Auth::user()->id;
+        $comment->post_id = $id;
+        $comment->seen = false;
+        $comment->save();
+
+        $html = '<div class="comment">
+                    <a class="avatar">'.
+                        \Illuminate\Html\HtmlFacade::image('http://www.gravatar.com/avatar/'. md5(strtolower(trim(Auth::user()->email))) .'.jpg?size=200', Auth::user()->name, array('class' => 'center')).'
+                    </a>
+                    <div class="content">
+                        <a class="author">'.Auth::user()->name.'</a>
+                        <div class="metadata">
+                            <div class="date">Created  '.date('Y-m-d H:i:s').'</div>
+                        </div>
+                        <div class="text">
+                            '.$comment->content.'
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                </div>';
+        return $html;
     }
 }

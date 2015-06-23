@@ -16,7 +16,11 @@ Route::group(['domain' => '{login}.blog.dev', 'middleware' => 'auth'], function 
 });
 
 Route::group(['domain' => '{login}.blog.dev'], function () {
+    Route::group(['middleware' => 'auth'], function () {
+        Route::post('/comment/{id}', ['uses' => 'BlogUserController@postComment', 'as' => 'blog.user.comment.post']);
+    });
     Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
+    Route::get('/home', ['uses' => 'HomeController@getHome', 'as' => 'blog.home']);
     Route::get('/blog/{id}', ['uses' => 'BlogUserController@getBlog', 'as' => 'blog.user.blog']);
     Route::get('/post/{id}', ['uses' => 'BlogUserController@getPost', 'as' => 'blog.user.post']);
     Route::get('/tag/{name}', ['uses' => 'BlogUserController@getTag', 'as' => 'blog.user.tag']);

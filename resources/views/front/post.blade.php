@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="ui divider"></div>
-            <div class="ui comments">
+            <div class="ui comments" id="commentary">
                 @foreach($post->comments as $comment)
                 <div class="comment">
                     <a class="avatar">
@@ -32,23 +32,19 @@
                         <div class="text">
                             {{ $comment->content }}
                         </div>
-                        <div class="actions">
-                            <a class="reply">Reply</a>
-                            <a class="delete">Delete</a>
-                        </div>
                     </div>
+                    <div class="ui divider"></div>
                 </div>
-                <div class="ui divider"></div>
                 @endforeach
-                <form class="ui reply form">
-                    <div class="field">
-                        <textarea></textarea>
-                    </div>
-                    <div class="ui button teal submit labeled icon">
-                        <i class="icon edit"></i> Add Comment
-                    </div>
-                </form>
             </div>
+            {!! Form::open(array('url' => "comment/$post->id", 'class' => 'ui reply form', 'id' => 'createcomments')) !!}
+                <div class="field">
+                    <textarea name="content"></textarea>
+                </div>
+                <button type="submit" class="ui button teal submit labeled icon">
+                    <i class="icon edit"></i> Add Comment
+                </button>
+            {!! Form::close() !!}
         </div>
     </div>
 @stop
