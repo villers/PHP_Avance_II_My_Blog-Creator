@@ -131,6 +131,14 @@ class DatabaseSeeder extends Seeder
                 'active' => false,
                 'blog_id' => 2,
                 'user_id' => 2
+            ],[
+                'title' => 'Post 4',
+                'slug' => 'post-4',
+                'summary' => $lipsum,
+                'content' => $lipsum,
+                'active' => false,
+                'blog_id' => 3,
+                'user_id' => 2
             ]
         ];
         foreach ($posts as $post) {
@@ -180,6 +188,18 @@ class DatabaseSeeder extends Seeder
                 'content' => $lipsum,
                 'user_id' => 2,
                 'post_id' => 1
+            ],[
+                'content' => $lipsum,
+                'user_id' => 2,
+                'post_id' => 2
+            ],[
+                'content' => $lipsum,
+                'user_id' => 1,
+                'post_id' => 3
+            ],[
+                'content' => $lipsum,
+                'user_id' => 2,
+                'post_id' => 3
             ]
         ];
         foreach ($comments as $comment) {

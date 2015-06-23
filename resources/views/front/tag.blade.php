@@ -6,10 +6,10 @@
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
-            <h2 class="ui dividing header">{{ $blog->title }}</h2>
+            <h2 class="ui dividing header">{{ $tag->tag }}</h2>
 
             <div class="ui grid">
-                @foreach($blog->posts as $post)
+                @foreach($tag->posts as $post)
                     <div class="ui grid">
                         <div class="sixteen wide column">
                             <h3 class="header">

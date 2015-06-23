@@ -15,6 +15,7 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
     Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
     Route::get('/blog/{id}', ['uses' => 'BlogUserController@getBlog', 'as' => 'blog.user.blog']);
     Route::get('/post/{id}', ['uses' => 'BlogUserController@getPost', 'as' => 'blog.user.post']);
+    Route::get('/tag/{name}', ['uses' => 'BlogUserController@getTag', 'as' => 'blog.user.tag']);
 });
 
 Route::group(['domain' => 'blog.dev'], function () {
