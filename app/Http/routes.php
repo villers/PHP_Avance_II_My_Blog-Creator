@@ -11,6 +11,10 @@
 |
 */
 
+Route::group(['domain' => '{login}.blog.dev', 'middleware' => 'auth'], function () {
+   Route::resource('/auth/blog', 'BlogController');
+});
+
 Route::group(['domain' => '{login}.blog.dev'], function () {
     Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
     Route::get('/blog/{id}', ['uses' => 'BlogUserController@getBlog', 'as' => 'blog.user.blog']);
