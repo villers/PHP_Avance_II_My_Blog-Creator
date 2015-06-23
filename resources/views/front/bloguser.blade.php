@@ -6,7 +6,13 @@
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
-            <h2 class="ui dividing header">Blog's of {{$user->name}}</h2>
+            <a href="/auth/blog/create" class="ui basic button">
+                <i class="icon add square"></i>
+                Ajouter un blog
+            </a>
+            <h2 class="ui dividing header">
+                Blog's of {{$user->name}}
+            </h2>
 
             <div class="ui grid">
                 @foreach($user->blogs as $blog)
