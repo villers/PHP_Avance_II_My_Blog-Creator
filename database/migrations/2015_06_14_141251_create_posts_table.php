@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->boolean('seen')->default(false);
             $table->boolean('active')->default(false);
+            $table->integer('blog_id')->unsigned();
             $table->integer('user_id')->unsigned();
         });
     }

@@ -26,6 +26,9 @@ class CreateForeignKeys extends Migration
         });
 
         Schema::table('posts', function(Blueprint $table) {
+            $table->foreign('blog_id')->references('id')->on('blogs')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
@@ -69,6 +72,7 @@ class CreateForeignKeys extends Migration
         });
 
         Schema::table('posts', function(Blueprint $table) {
+            $table->dropForeign('posts_blog_id_foreign');
             $table->dropForeign('posts_user_id_foreign');
         });
 

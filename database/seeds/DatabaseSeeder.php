@@ -113,6 +113,7 @@ class DatabaseSeeder extends Seeder
                 'summary' => $lipsum,
                 'content' => $lipsum,
                 'active' => true,
+                'blog_id' => 1,
                 'user_id' => 1
             ],[
                 'title' => 'Post 2',
@@ -120,6 +121,7 @@ class DatabaseSeeder extends Seeder
                 'summary' => $lipsum,
                 'content' => $lipsum,
                 'active' => true,
+                'blog_id' => 2,
                 'user_id' => 2
             ],[
                 'title' => 'Post 3',
@@ -127,6 +129,7 @@ class DatabaseSeeder extends Seeder
                 'summary' => $lipsum,
                 'content' => $lipsum,
                 'active' => false,
+                'blog_id' => 2,
                 'user_id' => 2
             ]
         ];
