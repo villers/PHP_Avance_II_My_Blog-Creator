@@ -6,17 +6,13 @@
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
-            <a href="/auth/blog/create" class="ui basic button">
-                <i class="icon add square"></i>
-                Ajouter un blog
-            </a>
             <h2 class="ui dividing header">
                 Blog's of {{$user->name}}
             </h2>
 
             <div class="ui grid">
                 @foreach($user->blogs as $blog)
-                    <div class="four wide column">
+                    <div class="four wide column item-blog">
                         <div class="ui card">
                             <div class="content">
                                 <div class="header">
@@ -25,7 +21,7 @@
                                 <div class="meta">
                                     <span>Created {{ date('Y', strtotime($blog->created_at)) }}</span>
                                 </div>
-                                <p>{{$blog->summary}}</p>
+                                <p>{{ str_limit($blog->summary, 50, $end = '...') }}</p>
                             </div>
                         </div>
                     </div>

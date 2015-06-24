@@ -15,7 +15,7 @@
                             <h3 class="header">
                                 <a href="{{ route('blog.user.post', ['login' => $user->name, 'id' => $post->id]) }}">{{$post->title}}</a>
                             </h3>
-                            <p>{{$post->summary}}</p>
+                            <p>{{ str_limit($post->summary, 300, '...') }}</p>
                             <div class="meta">
                                 <span>Created {{ date('Y-m-d H:i:s', strtotime($post->created_at)) }}</span>
                                 @include('partials.tags', ['taglist' => $post->tags])

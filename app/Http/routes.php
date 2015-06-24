@@ -15,8 +15,22 @@ Route::group(['domain' => '{login}.blog.dev', 'middleware' => 'auth'], function 
    Route::resource('/auth/blog', 'BlogController');
 });
 
+// Route des sous domaine
 Route::group(['domain' => '{login}.blog.dev'], function () {
+
+    // Route authentifier
     Route::group(['middleware' => 'auth'], function () {
+
+        // Route du panel dashboard
+        Route::group(['middleware' => 'auth.my', 'prefix' => 'admin'], function () {
+            Route::get('/', ['uses' => 'UserAdminController@getIndex', 'as' => 'blog.user.admin.index']);
+            Route::delete('/blog/{id}', ['uses' => 'UserAdminController@deleteBlog', 'as' => 'blog.user.admin.deleteBlog']);
+            Route::post('/blog', ['uses' => 'UserAdminController@postBlog', 'as' => 'blog.user.admin.postBlog']);
+            Route::post('/blog/edit', ['uses' => 'UserAdminController@putBlog', 'as' => 'blog.user.admin.putBlog']);
+            Route::get('/blog/{id}', ['uses' => 'UserAdminController@getPost', 'as' => 'blog.user.admin.getPost']);
+        });
+
+
         Route::post('/comment/{id}', ['uses' => 'BlogUserController@postComment', 'as' => 'blog.user.comment.post']);
     });
     Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
@@ -26,12 +40,14 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
     Route::get('/tag/{name}', ['uses' => 'BlogUserController@getTag', 'as' => 'blog.user.tag']);
 });
 
+
+// Route de la page d'index
 Route::group(['domain' => 'blog.dev'], function () {
     Route::get('/', ['uses' => 'HomeController@getIndex', 'as' => 'blog.index']);
     Route::get('/home', ['uses' => 'HomeController@getHome', 'as' => 'blog.home']);
 });
 
-// Auth
+// Route de connexion et déconnexion
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

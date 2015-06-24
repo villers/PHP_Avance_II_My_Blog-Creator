@@ -1,4 +1,10 @@
 (function() {
+  var selectedId, url;
+
+  selectedId = [];
+
+  url = $('#formurl').data('action');
+
   $('.message .close').on('click', function() {
     return $(this).closest('.message').fadeOut();
   });
@@ -6,6 +12,10 @@
   $('.card .image').dimmer({
     on: 'hover'
   });
+
+  $('.ui.checkbox').checkbox();
+
+  $('.ui.modal').modal();
 
   $('#createcomments').submit(function(e) {
     var $form;
@@ -16,6 +26,42 @@
       return $('textarea').val('');
     });
   });
+
+  $('input[type=checkbox]').change(function() {
+    if (this.checked) {
+      selectedId[this.value] = this.value;
+    } else {
+      delete selectedId[this.value];
+    }
+    return console.log(selectedId);
+  });
+
+  $('#delete').click(function() {
+    selectedId.forEach(function(element, index) {
+      return $.ajax({
+        url: url + '/blog/' + element,
+        type: 'DELETE',
+        success: function() {
+          return $('#blog-' + element).fadeOut();
+        }
+      });
+    });
+    return selectedId = [];
+  });
+
+  $('#add').click(function() {
+    return $('#addblog').modal('show');
+  });
+
+  if (url) {
+    $('.edit').editable(url + '/blog/edit');
+    $('.edit_area').editable(url.action + '/blog/edit', {
+      type: 'textarea',
+      cancel: 'Cancel',
+      submit: 'Valider',
+      tooltip: 'Click to edit...'
+    });
+  }
 
 }).call(this);
 

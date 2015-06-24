@@ -37,6 +37,14 @@
                 </div>
                 @endforeach
             </div>
+            @if(!Auth::check())
+            <div class="ui negative message">
+                <i class="close icon"></i>
+                <div class="header">
+                    You must be connected for comment this post
+                </div>
+            </div>
+            @endif
             {!! Form::open(array('url' => "comment/$post->id", 'class' => 'ui reply form', 'id' => 'createcomments')) !!}
                 <div class="field">
                     <textarea name="content"></textarea>

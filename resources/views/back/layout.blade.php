@@ -42,6 +42,7 @@
     </main>
 
     {!! Html::script('bower_components/jquery/dist/jquery.js') !!}
+    {!! Html::script('bower_components/jquery_jeditable/jquery.jeditable.js') !!}
     {!! Html::script('bower_components/semantic/dist/semantic.js') !!}
     {!! Html::script('js/app.js') !!}
     @yield('scripts')

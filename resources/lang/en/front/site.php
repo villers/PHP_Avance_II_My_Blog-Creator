@@ -7,4 +7,5 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'myblogs' => 'My Blogs',
+    'admin' => 'Admin',
 ];
