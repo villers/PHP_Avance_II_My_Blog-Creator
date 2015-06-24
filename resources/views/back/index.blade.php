@@ -53,7 +53,7 @@
                 </div>
                 <div class="content">
                     <h2 class="ui header">Creation d'un blog</h2>
-                    {!! Form::open(array('url' => '/admin/blog')) !!}
+                    {!! Form::open(array('url' => '/admin')) !!}
 
                     <div class="ui form">
                         <div class="field">

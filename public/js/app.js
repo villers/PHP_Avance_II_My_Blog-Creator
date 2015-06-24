@@ -39,7 +39,7 @@
   $('#delete').click(function() {
     selectedId.forEach(function(element, index) {
       return $.ajax({
-        url: url + '/blog/' + element,
+        url: url + '/' + element,
         type: 'DELETE',
         success: function() {
           return $('#blog-' + element).fadeOut();
@@ -54,8 +54,8 @@
   });
 
   if (url) {
-    $('.edit').editable(url + '/blog/edit');
-    $('.edit_area').editable(url.action + '/blog/edit', {
+    $('.edit').editable(url + '/edit');
+    $('.edit_area').editable(url + '/edit', {
       type: 'textarea',
       cancel: 'Cancel',
       submit: 'Valider',

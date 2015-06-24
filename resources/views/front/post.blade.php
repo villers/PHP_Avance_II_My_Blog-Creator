@@ -19,6 +19,7 @@
             </div>
             <div class="ui divider"></div>
             <div class="ui comments" id="commentary">
+                <div class="comment"></div>
                 @foreach($post->comments as $comment)
                 <div class="comment">
                     <a class="avatar">

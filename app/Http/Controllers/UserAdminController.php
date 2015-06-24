@@ -57,7 +57,40 @@ class UserAdminController extends Controller
     // get Articles
     public function getPost($login, $id)
     {
-        $posts = Post::findOrFail($id);
-        return view('back.index', compact('posts'));
+        $user = $this->user;
+        $blog = Blog::findOrFail($id);
+        return view('back.blog', compact('user', 'blog'));
+    }
+
+    // edit blog
+    public function putPost($login, $id)
+    {
+        $path = explode('-', Input::get('id'));
+        $post = Post::findOrFail($path[1]);
+        $post->$path[0] = Input::get('value');
+        if($path[0] == 'title')
+            $post->slug = str_slug(Input::get('value'));
+        $post->save();
+        return $post->$path[0];
+    }
+
+    // create post
+    public function postPost($login, $id)
+    {
+        $post = new Post;
+        $post->title =   Input::get('title');
+        $post->slug = str_slug(Input::get('title'));
+        $post->summary = Input::get('summary');
+        $post->content = Input::get('content');
+        $post->blog_id = $id;
+        $post->user_id = Auth::user()->id;
+        $post->save();
+        return Redirect::route('blog.user.admin.getPost', ['login' => Auth::user()->name, 'id' => $id]);
+    }
+
+    // delete blog
+    public function deletePost($login, $id, $postId)
+    {
+        return Post::destroy($postId);
     }
 }

@@ -24,10 +24,15 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
         // Route du panel dashboard
         Route::group(['middleware' => 'auth.my', 'prefix' => 'admin'], function () {
             Route::get('/', ['uses' => 'UserAdminController@getIndex', 'as' => 'blog.user.admin.index']);
-            Route::delete('/blog/{id}', ['uses' => 'UserAdminController@deleteBlog', 'as' => 'blog.user.admin.deleteBlog']);
-            Route::post('/blog', ['uses' => 'UserAdminController@postBlog', 'as' => 'blog.user.admin.postBlog']);
-            Route::post('/blog/edit', ['uses' => 'UserAdminController@putBlog', 'as' => 'blog.user.admin.putBlog']);
-            Route::get('/blog/{id}', ['uses' => 'UserAdminController@getPost', 'as' => 'blog.user.admin.getPost']);
+            Route::post('/', ['uses' => 'UserAdminController@postBlog', 'as' => 'blog.user.admin.postBlog']);
+            Route::post('/edit', ['uses' => 'UserAdminController@putBlog', 'as' => 'blog.user.admin.putBlog']);
+            Route::delete('/{id}', ['uses' => 'UserAdminController@deleteBlog', 'as' => 'blog.user.admin.deleteBlog']);
+
+            Route::get('/{id}', ['uses' => 'UserAdminController@getPost', 'as' => 'blog.user.admin.getPost']);
+            Route::post('/{id}', ['uses' => 'UserAdminController@postPost', 'as' => 'blog.user.admin.postBlog']);
+            Route::post('/{id}/edit', ['uses' => 'UserAdminController@putPost', 'as' => 'blog.user.admin.putPut']);
+            Route::delete('/{id}/{postId}', ['uses' => 'UserAdminController@deletePost', 'as' => 'blog.user.admin.deletePost']);
+
         });
 
 
