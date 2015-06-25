@@ -2,7 +2,6 @@
 
 use App\Blog;
 use App\Comment;
-use App\Contact;
 use App\Post;
 use App\PostTag;
 use App\Role;
@@ -28,8 +27,8 @@ class DatabaseSeeder extends Seeder
 
         // Création des roles
         $roles = [
-            ['title' => 'Administrator', 'slug' => 'admin'],
-            ['title' => 'User', 'slug' => 'user']
+            ['title' => 'User', 'slug' => 'user'],
+            ['title' => 'Administrator', 'slug' => 'admin']
         ];
         foreach ($roles as $role) {
             Role::create($role);
@@ -55,23 +54,6 @@ class DatabaseSeeder extends Seeder
         ];
         foreach ($users as $user) {
             User::create($user);
-        }
-
-        // Création des Contact
-        $contacts = [
-            [
-                'name' => 'user',
-                'email' => 'user@user.fr',
-                'text' => 'Lorem ipsum inceptos malesuada leo fusce tortor sociosqu semper, facilisis semper class tempus faucibus tristique duis eros, cubilia quisque habitasse aliquam fringilla orci non. Vel laoreet dolor enim justo facilisis neque accumsan, in ad venenatis hac per dictumst nulla ligula, donec mollis massa porttitor ullamcorper risus. Eu platea fringilla, habitasse.'
-            ],[
-                'name' => 'user',
-                'email' => 'user@user.fr',
-                'text' => 'Lorem ipsum inceptos malesuada leo fusce tortor sociosqu semper, facilisis semper class tempus faucibus tristique duis eros, cubilia quisque habitasse aliquam fringilla orci non. Vel laoreet dolor enim justo facilisis neque accumsan, in ad venenatis hac per dictumst nulla ligula, donec mollis massa porttitor ullamcorper risus. Eu platea fringilla, habitasse.',
-                'seen' => true
-            ]
-        ];
-        foreach ($contacts as $contact) {
-            Contact::create($contact);
         }
 
         // Création des Tags
