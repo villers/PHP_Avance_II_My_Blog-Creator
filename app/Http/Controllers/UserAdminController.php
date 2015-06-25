@@ -46,7 +46,7 @@ class UserAdminController extends Controller
         $blog = Blog::findOrFail($path[1]);
         $blog->$path[0] = Input::get('value');
         $blog->save();
-        return $blog->$path[0];
+        return htmlspecialchars($blog->$path[0]);
     }
 
     // delete blog
@@ -72,7 +72,7 @@ class UserAdminController extends Controller
         if($path[0] == 'title')
             $post->slug = str_slug(Input::get('value'));
         $post->save();
-        return $post->$path[0];
+        return htmlspecialchars($post->$path[0]);
     }
 
     // create post

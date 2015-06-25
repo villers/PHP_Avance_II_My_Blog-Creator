@@ -12,7 +12,7 @@
                 <div class="sixteen wide column">
                     <p>{{$post->summary}}</p>
                     <div class="meta">
-                        <span>Created {{ date('Y-m-d H:i:s', strtotime($post->created_at)) }}</span>
+                        <span>{{trans('front/site.created')}} {{ date('Y-m-d H:i:s', strtotime($post->created_at)) }}</span>
                         @include('partials.tags', ['taglist' => $post->tags])
                     </div>
                 </div>
@@ -42,7 +42,7 @@
             <div class="ui negative message">
                 <i class="close icon"></i>
                 <div class="header">
-                    You must be connected for comment this post
+                    {{ trans('front/site.mustbeconnectedforcomment') }}
                 </div>
             </div>
             @endif
@@ -51,7 +51,7 @@
                     <textarea name="content"></textarea>
                 </div>
                 <button type="submit" class="ui button teal submit labeled icon">
-                    <i class="icon edit"></i> Add Comment
+                    <i class="icon edit"></i> {{ trans('front/site.addcomment') }}
                 </button>
             {!! Form::close() !!}
         </div>

@@ -64,7 +64,7 @@ class BlogUserController extends Controller
                             <div class="date">Created  '.date('Y-m-d H:i:s').'</div>
                         </div>
                         <div class="text">
-                            '.$comment->content.'
+                            '.htmlspecialchars($comment->content).'
                         </div>
                     </div>
                     <div class="ui divider"></div>

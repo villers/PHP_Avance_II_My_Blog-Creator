@@ -11,6 +11,10 @@
 |
 */
 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+
 // Route des sous domaine
 Route::group(['domain' => '{login}.blog.dev'], function () {
 
@@ -48,6 +52,7 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
 Route::group(['domain' => 'blog.dev'], function () {
     Route::get('/', ['uses' => 'HomeController@getIndex', 'as' => 'blog.index']);
     Route::get('/home', ['uses' => 'HomeController@getHome', 'as' => 'blog.home']);
+    Route::get('/search', ['uses' => 'HomeController@getSearch', 'as' => 'blog.search']);
 });
 
 // Route de connexion et déconnexion
@@ -55,3 +60,8 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('/language', function() {
+    Session::set('locale', Input::get('locale'));
+    return Redirect::back();
+});

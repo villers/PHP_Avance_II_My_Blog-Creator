@@ -52,7 +52,7 @@
                     <button type="submit"
                             class="ui submit button green labeled icon huge">
                         <i class="signup icon"></i>
-                        regist
+                        {{ trans('front/site.register') }}
                     </button>
                 </div>
             </div>

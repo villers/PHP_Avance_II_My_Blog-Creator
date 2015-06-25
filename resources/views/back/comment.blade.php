@@ -1,4 +1,4 @@
-@extends('back.layout')
+@extends('front.layout')
 
 @section('main')
     <div class="column sixteen wide">
@@ -8,14 +8,14 @@
                 &gt;<a href="{{route('blog.user.admin.getPost', ['login' => $user->name,  'id' => $id])}}">Posts</a>
                 &gt;Comments
             </span>
-            <h2 class="ui dividing header">Comments List</h2>
+            <h2 class="ui dividing header">{{ trans('front/site.commentlist') }}</h2>
 
             <table class="ui compact celled definition table" id="formurl" data-action="{{ route('blog.user.admin.getComment', ['login' => $user->name,  'id' => $id, 'postId' => $postId]) }}">
                 <thead class="full-width">
                     <tr>
                         <th></th>
-                        <th>Author</th>
-                        <th>Content</th>
+                        <th>{{ trans('front/site.author') }}</th>
+                        <th>{{ trans('front/site.content') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@
                         <th></th>
                         <th colspan="4">
                             <div class="ui small  button red" id="delete">
-                                Delete selected posts
+                                {{ trans('front/site.deletecomment') }}
                             </div>
                         </th>
                     </tr>

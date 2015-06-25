@@ -31,8 +31,8 @@
                     </div>
                     <div class="required field">
                         <div class="ui checkbox">
+                            {!! Form::label('remember', trans('front/site.keeplogin')) !!}
                             {!! Form::checkbox('remember') !!}
-                            {!! Form::label('remember', 'Keep login') !!}
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="column center aligned">
                         <button type="submit"
                                 class="ui submit button green labeled huge">
-                            login
+                            {{ trans('front/site.login') }}
                         </button>
                     </div>
                 </div>

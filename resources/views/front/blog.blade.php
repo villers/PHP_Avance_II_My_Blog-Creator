@@ -17,7 +17,7 @@
                             </h3>
                             <p>{{ str_limit($post->summary, 300, '...') }}</p>
                             <div class="meta">
-                                <span>Created {{ date('Y-m-d H:i:s', strtotime($post->created_at)) }}</span>
+                                <span>{{trans('front/site.created')}} {{ date('Y-m-d H:i:s', strtotime($post->created_at)) }}</span>
                                 @include('partials.tags', ['taglist' => $post->tags])
                             </div>
                         </div>

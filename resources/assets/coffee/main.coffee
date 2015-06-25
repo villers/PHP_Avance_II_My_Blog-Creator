@@ -11,6 +11,10 @@ $('.ui.checkbox').checkbox()
 
 $('.ui.modal').modal()
 
+$('.dropdown').dropdown
+  transition: 'drop'
+
+
 
 $('#createcomments').submit (e) ->
   e.preventDefault()

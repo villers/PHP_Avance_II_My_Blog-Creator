@@ -17,6 +17,10 @@
 
   $('.ui.modal').modal();
 
+  $('.dropdown').dropdown({
+    transition: 'drop'
+  });
+
   $('#createcomments').submit(function(e) {
     var $form;
     e.preventDefault();

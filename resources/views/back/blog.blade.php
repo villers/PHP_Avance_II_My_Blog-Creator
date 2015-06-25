@@ -1,4 +1,4 @@
-@extends('back.layout')
+@extends('front.layout')
 
 @section('main')
     <div class="column sixteen wide">
@@ -8,16 +8,16 @@
                 &gt;Posts
             </span>
 
-            <h2 class="ui dividing header">Posts List</h2>
+            <h2 class="ui dividing header">{{ trans('front/site.postlist') }}</h2>
 
             <table class="ui compact celled definition table" id="formurl" data-action="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $blog->id]) }}">
                 <thead class="full-width">
                     <tr>
                         <th></th>
-                        <th>Title</th>
-                        <th>Summary</th>
-                        <th>Content</th>
-                        <th>Nb Comments</th>
+                        <th>{{ trans('front/site.title') }}</th>
+                        <th>{{ trans('front/site.summary') }}</th>
+                        <th>{{ trans('front/site.content') }}</th>
+                        <th>{{ trans('front/site.nbcomments') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@
                         <td class="edit_area" id="content-{{$post->id}}">{{$post->content}}</td>
                         <td>
                             {{count($post->comments)}}
-                            <a href="{{ route('blog.user.admin.getComment', ['login' => $user->name, 'id' => $blog->id, 'postId' => $post->id]) }}" class="pull-right"><i class="zoom icon"></i>See Comments</a>
+                            <a href="{{ route('blog.user.admin.getComment', ['login' => $user->name, 'id' => $blog->id, 'postId' => $post->id]) }}" class="pull-right"><i class="zoom icon"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -43,10 +43,10 @@
                         <th></th>
                         <th colspan="4">
                             <div class="ui right floated small primary labeled icon button" id="add">
-                                <i class="add circle icon"></i> Create Post
+                                <i class="add circle icon"></i> {{ trans('front/site.createpost') }}
                             </div>
                             <div class="ui small  button red" id="delete">
-                                Delete selected posts
+                                {{ trans('front/site.deletepost') }}
                             </div>
                         </th>
                     </tr>
@@ -56,15 +56,14 @@
             <div class="ui modal" id="addblog">
                 <i class="close icon"></i>
                 <div class="header">
-                    Modal Title
+                    {{ trans('front/site.createpost') }}
                 </div>
                 <div class="content">
-                    <h2 class="ui header">Creation d'un post</h2>
                     {!! Form::open(array('url' => "/admin/$blog->id")) !!}
 
                     <div class="ui form">
                         <div class="field">
-                            <label>Titre</label>
+                            <label>{{ trans('front/site.title') }}</label>
                             <input type="text" name='title' required>
                         </div>
                     </div>
@@ -73,7 +72,7 @@
 
                     <div class="ui form">
                         <div class="field">
-                            <label>Summary</label>
+                            <label>{{ trans('front/site.summary') }}</label>
                             <textarea name='summary' required></textarea>
                         </div>
                     </div>
@@ -82,7 +81,7 @@
 
                     <div class="ui form">
                         <div class="field">
-                            <label>Content</label>
+                            <label>{{ trans('front/site.content') }}</label>
                             <textarea name='content' required></textarea>
                         </div>
                     </div>
@@ -90,8 +89,8 @@
                     <br>
 
                     <input type="hidden" name="blog_id" value="{{$blog->id}}">
-                    <input class="ui primary button" type="submit">
-                    <input class="ui button" type="reset">
+                    <input class="ui primary button" type="submit" value="{{ trans('front/site.valid') }}">
+                    <input class="ui button" type="reset" value="{{ trans('front/site.reset') }}">
 
                     {!! Form::close() !!}
                 </div>

@@ -1,17 +1,17 @@
-@extends('back.layout')
+@extends('front.layout')
 
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
-            <h2 class="ui dividing header">Blog List</h2>
+            <h2 class="ui dividing header">{{trans('front/site.bloglist')}}</h2>
 
             <table class="ui compact celled definition table" id="formurl" data-action="{{ route('blog.user.admin.index', ['login' => $user->name]) }}">
                 <thead class="full-width">
                     <tr>
                         <th></th>
-                        <th>Title</th>
-                        <th>Summary</th>
-                        <th>Nb Articles</th>
+                        <th>{{ trans('front/site.title') }}</th>
+                        <th>{{ trans('front/site.summary') }}</th>
+                        <th>{{ trans('front/site.nbarticles') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +26,7 @@
                         <td class="edit_area" id="summary-{{$blog->id}}">{{$blog->summary}}</td>
                         <td>
                             {{count($blog->posts)}}
-                            <a href="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $blog->id]) }}" class="pull-right"><i class="zoom icon"></i>See Posts</a>
+                            <a href="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $blog->id]) }}" class="pull-right"><i class="zoom icon"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -36,10 +36,10 @@
                         <th></th>
                         <th colspan="4">
                             <div class="ui right floated small primary labeled icon button" id="add">
-                                <i class="add circle icon"></i> Create blog
+                                <i class="add circle icon"></i> {{ trans('front/site.createblog') }}
                             </div>
                             <div class="ui small  button red" id="delete">
-                                Delete selected blogs
+                                {{ trans('front/site.deleteblog') }}
                             </div>
                         </th>
                     </tr>
@@ -49,15 +49,14 @@
             <div class="ui modal" id="addblog">
                 <i class="close icon"></i>
                 <div class="header">
-                    Modal Title
+                    {{ trans('front/site.createblog') }}
                 </div>
                 <div class="content">
-                    <h2 class="ui header">Creation d'un blog</h2>
                     {!! Form::open(array('url' => '/admin')) !!}
 
                     <div class="ui form">
                         <div class="field">
-                            <label>Titre</label>
+                            <label>{{ trans('front/site.title') }}</label>
                             <input type="text" name='title' required>
                         </div>
                     </div>
@@ -66,15 +65,15 @@
 
                     <div class="ui form">
                         <div class="field">
-                            <label>Summary</label>
+                            <label>{{ trans('front/site.summary') }}</label>
                             <textarea name='summary' required></textarea>
                         </div>
                     </div>
 
                     <br>
 
-                    <input class="ui primary button" type="submit">
-                    <input class="ui button" type="reset">
+                    <input class="ui primary button" type="submit" value="{{ trans('front/site.valid') }}">
+                    <input class="ui button" type="reset" value="{{ trans('front/site.reset') }}">
 
                     {!! Form::close() !!}
                 </div>

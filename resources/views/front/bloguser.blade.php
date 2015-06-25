@@ -7,7 +7,7 @@
     <div class="column sixteen wide">
         <div class="ui segment">
             <h2 class="ui dividing header">
-                Blog's of {{$user->name}}
+                {{trans('front/site.blogof')}} {{$user->name}}
             </h2>
 
             <div class="ui grid">
@@ -19,7 +19,7 @@
                                     <a href="{{ route('blog.user.blog', ['login' => $user->name, 'id' => $blog->id]) }}">{{$blog->title}}</a>
                                 </div>
                                 <div class="meta">
-                                    <span>Created {{ date('Y', strtotime($blog->created_at)) }}</span>
+                                    <span>{{trans('front/site.created')}} {{ date('Y', strtotime($blog->created_at)) }}</span>
                                 </div>
                                 <p>{{ str_limit($blog->summary, 50, $end = '...') }}</p>
                             </div>
