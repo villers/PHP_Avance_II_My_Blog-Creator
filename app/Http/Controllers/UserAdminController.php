@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\Comment;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -92,5 +93,19 @@ class UserAdminController extends Controller
     public function deletePost($login, $id, $postId)
     {
         return Post::destroy($postId);
+    }
+
+    // get Comments
+    public function getComment($login, $id, $postId)
+    {
+        $user = $this->user;
+        $comments = Comment::where('post_id', $postId)->get();
+        return view('back.comment', compact('user', 'id', 'postId', 'comments'));
+    }
+
+    // delete Comment
+    public function deleteComment($login, $id, $postId, $commentId)
+    {
+        return Comment::destroy($commentId);
     }
 }

@@ -11,10 +11,6 @@
 |
 */
 
-Route::group(['domain' => '{login}.blog.dev', 'middleware' => 'auth'], function () {
-   Route::resource('/auth/blog', 'BlogController');
-});
-
 // Route des sous domaine
 Route::group(['domain' => '{login}.blog.dev'], function () {
 
@@ -33,6 +29,8 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
             Route::post('/{id}/edit', ['uses' => 'UserAdminController@putPost', 'as' => 'blog.user.admin.putPut']);
             Route::delete('/{id}/{postId}', ['uses' => 'UserAdminController@deletePost', 'as' => 'blog.user.admin.deletePost']);
 
+            Route::get('/{id}/{postId}', ['uses' => 'UserAdminController@getComment', 'as' => 'blog.user.admin.getComment']);
+            Route::delete('/{id}/{postId}/{commentId}', ['uses' => 'UserAdminController@deleteComment', 'as' => 'blog.user.admin.deleteComment']);
         });
 
 

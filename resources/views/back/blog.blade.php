@@ -3,6 +3,11 @@
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
+            <span class="pull-left">
+                <a href="{{route('blog.user.admin.index', ['login' => $user->name])}}">Blogs</a>
+                &gt;Posts
+            </span>
+
             <h2 class="ui dividing header">Posts List</h2>
 
             <table class="ui compact celled definition table" id="formurl" data-action="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $blog->id]) }}">
@@ -28,7 +33,7 @@
                         <td class="edit_area" id="content-{{$post->id}}">{{$post->content}}</td>
                         <td>
                             {{count($post->comments)}}
-                            <a href="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $post->id]) }}" class="pull-right"><i class="zoom icon"></i>Open Post</a>
+                            <a href="{{ route('blog.user.admin.getComment', ['login' => $user->name, 'id' => $blog->id, 'postId' => $post->id]) }}" class="pull-right"><i class="zoom icon"></i>See Comments</a>
                         </td>
                     </tr>
                     @endforeach

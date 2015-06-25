@@ -26,7 +26,7 @@
                         <td class="edit_area" id="summary-{{$blog->id}}">{{$blog->summary}}</td>
                         <td>
                             {{count($blog->posts)}}
-                            <a href="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $blog->id]) }}" class="pull-right"><i class="zoom icon"></i>Open Blog</a>
+                            <a href="{{ route('blog.user.admin.getPost', ['login' => $user->name, 'id' => $blog->id]) }}" class="pull-right"><i class="zoom icon"></i>See Posts</a>
                         </td>
                     </tr>
                     @endforeach
