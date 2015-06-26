@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Session;
 
 class Lang
 {
+    /**
+     * @param $request
+     * @param callable $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
         if(!Session::has('locale'))

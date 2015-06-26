@@ -14,15 +14,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller {
+    /**
+     * @return \Illuminate\View\View
+     */
     public function getIndex() {
         $users = User::paginate(8);
         return view('front.index', compact('users'));
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function getHome() {
         return redirect('/');
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function getSearch() {
         $search = Input::get('search');
         $posts = Post::where('title', 'like', '%'.$search.'%')
@@ -31,6 +40,10 @@ class HomeController extends Controller {
         return view('front.search', compact('posts', 'search'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getFollow($id)
     {
         $queryFollow = Follow::where('user_id', Auth::user()->id)->where('user_followed_id', $id);

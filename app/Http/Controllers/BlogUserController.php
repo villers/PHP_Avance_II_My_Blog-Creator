@@ -19,6 +19,10 @@ class BlogUserController extends Controller
         $this->user = User::where('name', Route::input('login'))->firstOrFail();
     }
 
+    /**
+     * @param $login
+     * @return \Illuminate\View\View
+     */
     public function getIndex($login)
     {
         $user = $this->user;
@@ -30,6 +34,11 @@ class BlogUserController extends Controller
         return view('front.bloguser', compact('user', 'checkFollow'));
     }
 
+    /**
+     * @param $login
+     * @param $id
+     * @return \Illuminate\View\View
+     */
     public function getBlog($login, $id)
     {
         $user = $this->user;
@@ -37,6 +46,11 @@ class BlogUserController extends Controller
         return view('front.blog', compact('user', 'blog'));
     }
 
+    /**
+     * @param $login
+     * @param $name
+     * @return \Illuminate\View\View
+     */
     public function getTag($login, $name)
     {
         $user = $this->user;
@@ -44,6 +58,11 @@ class BlogUserController extends Controller
         return view('front.tag', compact('user', 'tag'));
     }
 
+    /**
+     * @param $login
+     * @param $id
+     * @return \Illuminate\View\View
+     */
     public function getPost($login, $id)
     {
         $user = $this->user;
@@ -51,6 +70,11 @@ class BlogUserController extends Controller
         return view('front.post', compact('user', 'post'));
     }
 
+    /**
+     * @param $login
+     * @param $id
+     * @return string
+     */
     public function postComment($login, $id)
     {
         $comment = new Comment;

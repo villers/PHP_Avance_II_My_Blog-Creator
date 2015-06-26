@@ -22,6 +22,9 @@ class UserAdminController extends Controller
     }
 
     // list blog
+    /**
+     * @return \Illuminate\View\View
+     */
     public function getIndex()
     {
         $user = $this->user;
@@ -29,6 +32,10 @@ class UserAdminController extends Controller
     }
 
     // create blog
+    /**
+     * @param $login
+     * @return mixed
+     */
     public function postBlog($login)
     {
         $blog = new Blog;
@@ -40,6 +47,10 @@ class UserAdminController extends Controller
     }
 
     // edit blog
+    /**
+     * @param $login
+     * @return string
+     */
     public function putBlog($login)
     {
         $path = explode('-', Input::get('id'));
@@ -50,12 +61,22 @@ class UserAdminController extends Controller
     }
 
     // delete blog
+    /**
+     * @param $login
+     * @param $id
+     * @return int
+     */
     public function deleteBlog($login, $id)
     {
         return Blog::destroy($id);
     }
 
     // get Articles
+    /**
+     * @param $login
+     * @param $id
+     * @return \Illuminate\View\View
+     */
     public function getPost($login, $id)
     {
         $user = $this->user;
@@ -64,6 +85,11 @@ class UserAdminController extends Controller
     }
 
     // edit blog
+    /**
+     * @param $login
+     * @param $id
+     * @return string
+     */
     public function putPost($login, $id)
     {
         $path = explode('-', Input::get('id'));
@@ -76,6 +102,11 @@ class UserAdminController extends Controller
     }
 
     // create post
+    /**
+     * @param $login
+     * @param $id
+     * @return mixed
+     */
     public function postPost($login, $id)
     {
         $post = new Post;
@@ -90,12 +121,24 @@ class UserAdminController extends Controller
     }
 
     // delete blog
+    /**
+     * @param $login
+     * @param $id
+     * @param $postId
+     * @return int
+     */
     public function deletePost($login, $id, $postId)
     {
         return Post::destroy($postId);
     }
 
     // get Comments
+    /**
+     * @param $login
+     * @param $id
+     * @param $postId
+     * @return \Illuminate\View\View
+     */
     public function getComment($login, $id, $postId)
     {
         $user = $this->user;
@@ -104,6 +147,13 @@ class UserAdminController extends Controller
     }
 
     // delete Comment
+    /**
+     * @param $login
+     * @param $id
+     * @param $postId
+     * @param $commentId
+     * @return int
+     */
     public function deleteComment($login, $id, $postId, $commentId)
     {
         return Comment::destroy($commentId);

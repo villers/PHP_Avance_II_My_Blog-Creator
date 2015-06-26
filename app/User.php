@@ -28,41 +28,65 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     protected $fillable = ['name', 'email', 'password', 'role_id', 'seen', 'remember_token'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
         return $this->hasMany('App\Comment');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function blogs()
     {
         return $this->hasMany('App\Blog');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts()
     {
         return $this->hasMany('App\Post');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
         return $this->belongsTo('App\Role');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function following()
     {
         return $this->hasMany('App\Follow');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function followers()
     {
         return $this->hasMany('App\Follow', 'user_followed_id');
     }
 
+    /**
+     * @return bool
+     */
     public function isAdmin()
     {
         return $this->role->slug == 'admin';
     }
 
+    /**
+     * @return bool
+     */
     public function isNotUser()
     {
         return $this->role->slug != 'user';
