@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Comment;
+use App\Follow;
 use App\Post;
 use App\Tag;
 use App\User;
@@ -21,7 +22,12 @@ class BlogUserController extends Controller
     public function getIndex($login)
     {
         $user = $this->user;
-        return view('front.bloguser', compact('user'));
+        if(Auth::check() && Follow::where('user_id', Auth::user()->id)->where('user_followed_id', $this->user->id)->first())
+            $checkFollow = true;
+        else
+            $checkFollow = false;
+
+        return view('front.bloguser', compact('user', 'checkFollow'));
     }
 
     public function getBlog($login, $id)

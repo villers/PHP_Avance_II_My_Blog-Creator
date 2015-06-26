@@ -15,6 +15,8 @@ return [
     'userslist' => 'Liste des Utilisateurs',
     'joined' => 'Inscrit le',
     'followers' => 'Suiveurs',
+    'follow' => 'Suivre',
+    'unfollow' => 'Ne plus suivre',
     'keeplogin' => 'Rester connecté',
     'blogof' => 'Les Blogs de',
     'created' => 'Créer en',

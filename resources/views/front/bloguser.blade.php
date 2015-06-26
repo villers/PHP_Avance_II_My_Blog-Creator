@@ -1,11 +1,22 @@
 @extends('front.layout')
-<!--
- // https://github.com/AaronJan/laravel5-example/blob/master/resources/views/welcome.blade.php
 
- -->
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">
+
+            @if(Auth::check() && $user->id !== Auth::user()->id)
+                <a href="{{ route('blog.follow', ['id' => $user->id]) }}" class="ui basic button">
+                    @if(!$checkFollow)
+                        <i class="icon add square"></i>
+                        {{ trans('front/site.follow') }}
+                    @else
+                        <i class="icon remove user"></i>
+                        {{ trans('front/site.unfollow') }}
+                    @endif
+                </a>
+            @endif
+
+
             <h2 class="ui dividing header">
                 {{trans('front/site.blogof')}} {{$user->name}}
             </h2>

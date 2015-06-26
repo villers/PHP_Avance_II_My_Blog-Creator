@@ -7,8 +7,10 @@
  */
 
 namespace app\Http\Controllers;
+use App\Follow;
 use App\Post;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller {
@@ -27,5 +29,17 @@ class HomeController extends Controller {
             ->orWhere('summary', 'like', '%'.$search.'%')
             ->orWhere('content', 'like', '%'.$search.'%')->get();
         return view('front.search', compact('posts', 'search'));
+    }
+
+    public function getFollow($id)
+    {
+        $queryFollow = Follow::where('user_id', Auth::user()->id)->where('user_followed_id', $id);
+
+        if ($queryFollow->first()) {
+            $queryFollow->delete();
+        } else {
+            Follow::create(['user_id' => Auth::user()->id, 'user_followed_id' => $id]);
+        }
+        return redirect()->back();
     }
 }

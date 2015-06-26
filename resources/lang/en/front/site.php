@@ -15,6 +15,8 @@ return [
     'userslist' => 'Users List',
     'joined' => 'Joined',
     'followers' => 'followers',
+    'follow' => 'Follow',
+    'unfollow' => 'Unfollow',
     'keeplogin' => 'Keep login',
     'blogof' => 'Blog\'s of',
     'created' => 'Created',

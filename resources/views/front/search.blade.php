@@ -1,8 +1,5 @@
 @extends('front.layout')
-<!--
- // https://github.com/AaronJan/laravel5-example/blob/master/resources/views/welcome.blade.php
 
- -->
 @section('main')
     <div class="column sixteen wide">
         <div class="ui segment">

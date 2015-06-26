@@ -37,9 +37,9 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
             Route::delete('/{id}/{postId}/{commentId}', ['uses' => 'UserAdminController@deleteComment', 'as' => 'blog.user.admin.deleteComment']);
         });
 
-
         Route::post('/comment/{id}', ['uses' => 'BlogUserController@postComment', 'as' => 'blog.user.comment.post']);
     });
+
     Route::get('/', ['uses' => 'BlogUserController@getIndex', 'as' => 'blog.user.index']);
     Route::get('/home', ['uses' => 'HomeController@getHome', 'as' => 'blog.home']);
     Route::get('/blog/{id}', ['uses' => 'BlogUserController@getBlog', 'as' => 'blog.user.blog']);
@@ -50,6 +50,10 @@ Route::group(['domain' => '{login}.blog.dev'], function () {
 
 // Route de la page d'index
 Route::group(['domain' => 'blog.dev'], function () {
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/follow/{id}', ['uses' => 'HomeController@getFollow', 'as' => 'blog.follow']);
+    });
+
     Route::get('/', ['uses' => 'HomeController@getIndex', 'as' => 'blog.index']);
     Route::get('/home', ['uses' => 'HomeController@getHome', 'as' => 'blog.home']);
     Route::get('/search', ['uses' => 'HomeController@getSearch', 'as' => 'blog.search']);
