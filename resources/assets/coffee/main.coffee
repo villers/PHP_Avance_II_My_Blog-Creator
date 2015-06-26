@@ -1,3 +1,5 @@
+'use strict'
+
 selectedId = []
 url = $('#formurl').data('action')
 
