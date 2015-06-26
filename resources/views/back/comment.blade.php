@@ -31,17 +31,10 @@
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot class="full-width">
-                    <tr>
-                        <th></th>
-                        <th colspan="4">
-                            <div class="ui small  button red" id="delete">
-                                {{ trans('front/site.deletecomment') }}
-                            </div>
-                        </th>
-                    </tr>
-                </tfoot>
             </table>
+            <div class="pull-left ui small  button red" id="delete">
+                {{ trans('front/site.deletecomment') }}
+            </div>
         </div>
     </div>
 @stop

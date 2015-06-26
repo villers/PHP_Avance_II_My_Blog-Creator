@@ -31,20 +31,14 @@
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot class="full-width">
-                    <tr>
-                        <th></th>
-                        <th colspan="4">
-                            <div class="ui right floated small primary labeled icon button" id="add">
-                                <i class="add circle icon"></i> {{ trans('front/site.createblog') }}
-                            </div>
-                            <div class="ui small  button red" id="delete">
-                                {{ trans('front/site.deleteblog') }}
-                            </div>
-                        </th>
-                    </tr>
-                </tfoot>
             </table>
+            <div class="pull-right ui right floated small primary labeled icon button" id="add">
+                <i class="add circle icon"></i> {{ trans('front/site.createblog') }}
+            </div>
+            <div class="pull-left ui small  button red" id="delete">
+                {{ trans('front/site.deleteblog') }}
+            </div>
+
 
             <div class="ui modal" id="addblog">
                 <i class="close icon"></i>
