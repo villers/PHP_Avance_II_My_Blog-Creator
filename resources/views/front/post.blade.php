@@ -23,7 +23,7 @@
                         {!! Html::image('http://www.gravatar.com/avatar/'. md5(strtolower(trim($comment->user->email))) .'.jpg?size=200', $comment->user->name, array('class' => 'center')) !!}
                     </a>
                     <div class="content">
-                        <a class="author">{{ $comment->user->name }}</a>
+                        <a class="author" href="{{ route('blog.user.index', ['login' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
                         <div class="metadata">
                             <div class="date">Created {{ date('Y-m-d H:i:s', strtotime($comment->created_at)) }}</div>
                         </div>
